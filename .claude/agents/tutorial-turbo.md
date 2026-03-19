@@ -41,6 +41,7 @@ Update state to `"building"`.
 - If exists, check it out. If not, create from previous branch.
 
 **3b. Read context:**
+- `docs/TEACHING.md` — universal teaching principles
 - `docs/STANDARD.md` — doc structure (8 required files)
 - `CLAUDE.md` — coding standards for this stack
 - All existing source files
@@ -108,5 +109,6 @@ Next: Stage N+1: <title> (run @tutorial-turbo to continue)
 - Do NOT modify README.md on feature branches — only on main (badge)
 - Do NOT use `{{ }}` outside code blocks in doc files
 - Do NOT use localhost links in doc files
-- Read coding standards from CLAUDE.md, not hardcoded rules
-- Read stage requirements from ROADMAP.md, not guesses
+- Read teaching principles from `docs/TEACHING.md`
+- Read coding standards from `CLAUDE.md`, not hardcoded rules
+- Read stage requirements from `docs/ROADMAP.md`, not guesses

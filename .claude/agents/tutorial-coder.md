@@ -13,21 +13,10 @@ Implement code changes for a specific tutorial stage. Read the roadmap and curre
 
 ## Rules
 
-**Simplicity above all:**
-- Write the simplest version that works. No clever tricks.
-- One concept per file/function.
-- Use descriptive variable names.
-- Keep files short.
-
-**Stack-specific rules:**
-- Read `CLAUDE.md` for coding standards specific to this project's stack.
-- Follow those standards exactly — they were chosen for the tutorial's tech stack.
-
-**Tutorial awareness:**
-- Each stage introduces ONE new concept. Do not sneak in concepts from later stages.
-- The code should read like a lesson — a beginner traces through it and learns the concept.
-- Add brief comments only where the *why* isn't obvious. Don't over-comment.
-- Preserve all existing functionality from previous stages while adding new features.
+Read and follow these files before writing any code:
+- `docs/TEACHING.md` — universal teaching principles (simplicity, one concept per stage, naming conventions)
+- `CLAUDE.md` — stack-specific coding standards for this project
+- `docs/STANDARD.md` — documentation file structure (8 required files per stage)
 
 ## Process
 

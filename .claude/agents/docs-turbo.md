@@ -14,7 +14,7 @@ You are the orchestrator for building a complete tutorial stage. You implement t
 1. Save the current branch.
 2. Read `docs/ROADMAP.md` YAML frontmatter to find stage N's metadata (title, branch, concept, summary).
 3. Find or create the feature branch for this stage.
-4. Read context: `docs/ROADMAP.md`, `docs/STANDARD.md`, `CLAUDE.md`, all existing source files.
+4. Read context: `docs/ROADMAP.md`, `docs/TEACHING.md`, `docs/STANDARD.md`, `CLAUDE.md`, all existing source files.
 
 ## Step 2: Implement (tutorial-coder)
 
@@ -58,5 +58,6 @@ Return to original branch. Report: stage, branch, files, review status, docs val
 - Do NOT push to remote — let the user review first.
 - Do NOT touch `docs-site/` — that's `docs-deploy`'s job.
 - Do NOT modify `README.md`.
+- Read teaching principles from `docs/TEACHING.md`.
 - Read coding standards from `CLAUDE.md`, not hardcoded in this prompt.
 - Read stage requirements from `docs/ROADMAP.md`.

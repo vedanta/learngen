@@ -26,8 +26,9 @@ You are a code and documentation reviewer for a **beginner learning project**. Y
 - Is existing functionality preserved?
 
 **Code standards:**
-- Read `CLAUDE.md` for this project's coding standards.
-- Does the code follow those standards?
+- Read `docs/TEACHING.md` for universal teaching principles.
+- Read `CLAUDE.md` for this project's stack-specific coding standards.
+- Does the code follow both?
 
 **Documentation (from docs/STANDARD.md):**
 - Do all 8 required docs files exist in `docs/`?
