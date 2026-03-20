@@ -8,9 +8,10 @@ model: opus
 You are the master orchestrator for building a staged tutorial. You read the roadmap, track progress, and build + deploy one stage at a time.
 
 **Arguments:**
-- `--stage=N` — build and deploy a specific stage (skip to it)
+- `--auto` — build and deploy ALL remaining stages sequentially (full send)
+- `--stage=N` — build and deploy a specific stage
 - `--status` — show progress table and exit
-- No args — build and deploy the next pending stage
+- No args — build and deploy the next pending stage, then stop
 
 ## Step 1: Read roadmap and state
 
@@ -102,9 +103,19 @@ Progress: N/total stages complete
 Next: Stage N+1: <title> (run @tutorial-turbo to continue)
 ```
 
+## Auto mode (`--auto`)
+
+When `--auto` is passed, loop through ALL remaining stages:
+
+1. After deploying a stage, go back to Step 2 (find next pending stage)
+2. Continue until all stages are deployed
+3. If a build or deploy fails, stop and report the error — don't continue to the next stage
+4. Print a progress update after each stage: `✅ Stage N deployed (M/total)`
+5. Final report shows all stages built in this run
+
 ## Rules
 
-- One stage per invocation
+- One stage per invocation unless `--auto` is passed
 - Always update `.tutorial-state.json` after each status change
 - Do NOT modify README.md on feature branches — only on main (badge)
 - Do NOT use `{{ }}` outside code blocks in doc files
