@@ -58,6 +58,64 @@ Site is live at `https://<user>.github.io/<repo>/`
 
 ---
 
+## Workflow Diagram
+
+```mermaid
+flowchart TD
+    Start["@tutorial-init 'idea'"]
+
+    Start --> R1["Round 1: Big Picture\n(stack, audience, core question)"]
+    R1 --> R2["Round 2: End State\n(finished app, stage count)"]
+    R2 --> R3["Round 3: Stage Breakdown\n(one concept per stage)"]
+    R3 --> R4["Round 4: Grouping\n(Foundation, Core, Polish...)"]
+    R4 --> R5["Round 5: Confirm & Scaffold"]
+
+    R5 --> Files["Generated Files:\nROADMAP.md, CLAUDE.md, README.md\nMakefile, VitePress site, config"]
+
+    Files --> Turbo["@tutorial-turbo\nor @tutorial-turbo --auto"]
+
+    Turbo --> ReadState["Read ROADMAP.md +\n.tutorial-state.json"]
+    ReadState --> FindNext{"Find next\npending stage"}
+
+    FindNext -->|"All deployed"| Done["All stages complete!"]
+    FindNext -->|"Stage N"| Build
+
+    subgraph Build ["Step 3: Build (feature branch)"]
+        CreateBranch["Create branch from\nprevious stage"] --> ReadContext["Read TEACHING.md\nCLAUDE.md, STANDARD.md"]
+        ReadContext --> Code["Implement code\n(one concept)"]
+        Code --> Docs["Generate 8 doc files\n(stage.json, readme, changelog,\nsteps, walkthrough, architecture,\nexercises, troubleshooting)"]
+        Docs --> Review["Self-review\n(correctness, simplicity,\nstage discipline)"]
+        Review --> CommitBranch["Commit + push\nfeature branch"]
+    end
+
+    CommitBranch --> StateBuilt["State: built"]
+
+    subgraph Deploy ["Step 4: Deploy (main branch)"]
+        PullDocs["Pull docs via\npull-stage-docs.sh"] --> UpdateSidebar["Update sidebar\nin config.mjs"]
+        UpdateSidebar --> UpdateLanding["Update landing page\n(card to clickable)"]
+        UpdateLanding --> UpdateOverview["Update overview\n(add stage link)"]
+        UpdateOverview --> UpdateBadge["Update README\nbadge count"]
+        UpdateBadge --> SiteBuild["npm run docs:build"]
+        SiteBuild --> CommitMain["Commit + push main"]
+    end
+
+    StateBuilt --> Deploy
+    CommitMain --> StateDeployed["State: deployed"]
+
+    StateDeployed --> GHA["GitHub Actions\nauto-deploys to Pages"]
+
+    StateDeployed -->|"--auto"| FindNext
+    StateDeployed -->|"default"| Report["Report:\nStage N deployed\nNext: Stage N+1"]
+```
+
+### Summary
+
+1. **Init** (once) — 5 interactive rounds produce the scaffold and roadmap
+2. **Turbo** (per stage) — build on feature branch, deploy on main, GitHub Actions publishes
+3. **Loop** — `--auto` continues to the next stage automatically; default stops after one
+
+---
+
 ## Architecture
 
 ### File Structure (after `tutorial-init`)
