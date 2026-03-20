@@ -103,14 +103,16 @@ Wrap with `withMermaid()`. Set `appearance: 'dark'`.
 Set accent colors based on `accent` field (amber, blue, green, purple, rose).
 
 ### `docs-site/docs/index.md`
-Landing page with:
-- Hero (title, tagline, Get Started + GitHub buttons)
-- Feature cards (teaching methodology)
-- Visual pipeline (data/concept flow for this tutorial)
-- Grouped stage cards (all stages, none available yet)
-- Tech stack cards
-- Audience section
-- CTA button
+**Read `docs-site/templates/homepage.md` for the exact template structure and CSS.**
+Generate the landing page with these sections:
+1. Hero (VitePress frontmatter) — project name, tagline, Get Started + GitHub buttons
+2. Feature cards (VitePress frontmatter) — 4 cards about the teaching method (One Concept Per Stage, Always a Working App, Read the Code, Break Things on Purpose)
+3. "What You'll Build" — one paragraph + visual pipeline (`.data-flow-visual` with `.flow-step` boxes and `.flow-arrow` separators showing the tutorial's data/concept flow)
+4. Stage grid (`.stage-grid`) — groups from ROADMAP.md, each with heading, `.group-desc`, and stage cards. All cards start as `<div class="stage-card">` (dimmed). `docs-deploy` converts them to `<a>` with `available` class as stages are built.
+5. Tech stack cards (`.stack-cards`) — 2-4 cards from the ROADMAP.md stack config
+6. "Who This Is For" (`.audience-list`) — bullet points from Round 1 learner profile
+7. CTA button (`.cta-button`) — links to `/{{base}}overview`
+8. `<style>` block — copy the full CSS from the template file verbatim. It is fully reusable across all tutorials.
 
 ### `docs-site/docs/overview.md`
 Tutorial overview with stage table (no links yet — stages aren't built).
